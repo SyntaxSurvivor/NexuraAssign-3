@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+
+    <style>
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FF5A5F;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 32px;
+            margin-right: 8px;
+        }
+
+        .logo span {
+            color: #222;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #222;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: #008489;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 20px 0;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #222;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .nav-link:hover {
+            border-color: #bbb;
+            text-decoration: none;
+        }
+
+        .hero-section {
+            background-color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .hero-section .hero {
+            padding-bottom: 94px;
+        }
+
+        .hero-section h1 {
+            font-size: 52px;
+            margin-bottom: 24px;
+        }
+
+        .search-bar input {
+            width: 500px;
+            padding: 16px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            box-sizing: border-box;
+        }
+
+        .help-categories {
+            margin-top: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .category-link {
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+            text-decoration: none;
+            padding-bottom: 16px;
+            border-bottom: 3px solid transparent;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .category-link:hover {
+            color: #222;
+            text-decoration: none;
+        }
+
+        .category-link.active {
+            color: #222;
+            border-bottom-color: #222;
+        }
+
+        .topics-section {
+            padding: 40px 0;
+        }
+
+        .topics-section h2 {
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .topics-scroll-container {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        .topic-card {
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #222;
+            flex: 0 0 280px;
+            min-width: 280px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .topic-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+
+        .topic-image-placeholder {
+            width: 100%;
+            height: 180px;
+            background-color: #eee;
+        }
+
+        .topic-card h3 {
+            margin: 0;
+            font-size: 18px;
+            padding: 16px;
+        }
+
+        .explore-section {
+            padding: 40px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .explore-section h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .explore-description {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 24px;
+        }
+
+        .btn-login {
+            background-color: #222;
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-login:hover {
+            background-color: #444;
+            text-decoration: none;
+        }
+
+        .top-articles {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .top-articles h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-align: left;
+            color: #222;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .article-card {
+            padding: 20px;
+            transition: all 0.2s ease-in-out;
+            background-color: #fff;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .article-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .article-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .explore-contact {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: #181818;
+            padding: 60px 10%;
+            flex-wrap: wrap;
+        }
+
+        .explore {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .explore h2 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .explore-cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #222;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 280px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .card-text {
+            color: #fff;
+            padding: 15px;
+        }
+
+        .card-text h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin: 0 0 8px;
+        }
+
+        .card-text p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .contact {
+            flex: 1;
+            background-color: #181818;
+            padding: 20px 30px;
+            border-radius: 12px;
+            min-width: 280px;
+            max-width: 400px;
+        }
+
+        .contact h2 {
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        .contact-btn {
+            margin-top: 20px;
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #e5e5e5;
+        }
+
+        .feedback {
+            margin-top: 15px;
+        }
+
+        .feedback a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: #f7f7f7;
+            border-top: 1px solid #ddd;
+            padding: 40px 0 20px 0;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-col h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #222;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            text-align: center;
+            color: #555;
+        }
+
+        .main-nav {
+            position: relative;
+        }
+
+        .hamburger-menu {
+            display: none;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 3px;
+            background-color: #222;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 40px;
+                right: 0;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                width: 200px;
+                z-index: 100;
+                padding: 8px 0;
+            }
+
+            .nav-links.active {
+                display: block;
+            }
+
+            .nav-links .nav-link {
+                display: block;
+                font-size: 16px;
+                border: none;
+                border-radius: 0;
+                padding: 12px 16px;
+            }
+
+            .nav-links .nav-link:hover {
+                background-color: #f7f7f7;
+            }
+
+            .hero-section h1 {
+                font-size: 36px;
+            }
+
+            .search-bar input {
+                width: 100%;
+            }
+
+            .hero-section .hero {
+                padding-bottom: 40px;
+            }
+
+            .help-categories {
+                justify-content: center;
+            }
+
+            .explore-contact {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="airbnb.png" alt="Logo">
+                <span>Help Centre</span>
+            </div>
+
+            <nav class="main-nav">
+                <button class="hamburger-menu">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </button>
+
+                <div class="nav-links">
+                    <a href="#" class="nav-link">Log in or sign up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="container">
+                <section class="hero">
+                    <h1>Hi, how can we help?</h1>
+                    <div class="search-bar">
+                        <input type="search" placeholder="Search guides, articles, and more" />
+                    </div>
+                </section>
+
+                <nav class="help-categories">
+                    <a href="#" class="category-link active">Guest</a>
+                    <a href="#" class="category-link">Home host</a>
+                    <a href="#" class="category-link">Experience host</a>
+                    <a href="#" class="category-link">Service host</a>
+                    <a href="#" class="category-link">Travel admin</a>
+                </nav>
+            </div>
+        </section>
+
+        <section class="explore-section">
+            <div class="container">
+                <h2>We’re here for you</h2>
+                <p class="explore-description">Log in to get help with your reservations, account, and more.</p>
+                <a href="#" class="btn-login">Log in or sign up</a>
+            </div>
+        </section>
+
+        <section class="topics-section">
+            <div class="container">
+                <h2>Guides for getting started</h2>
+
+                <div class="topics-scroll-container">
+
+                    <a href="#" class="topic-card">
+                        <div class="topic-image-placeholder">
+                            <img src="how-reviews-work-optimized.jpg" alt=""
+                                style="height: 180px ; width: 100%; object-fit: cover; border-radius: 12px 12px 0 0;  ">
+                        </div>
+                        <h3>Getting started as a guest</h3>
+                    </a>
+
+                    <a href="#" class="topic-card">
+                        <div class="topic-image-placeholder">
+                            <img src="help-with-a-reservation-optimized.jpg" alt=""
+                                style="height: 180px ; width: 100%; object-fit: cover; border-radius: 12px 12px 0 0;  ">
+                        </div>
+                        <h3>Managing your reservation</h3>
+                    </a>
+
+                    <a href="#" class="topic-card">
+                        <div class="topic-image-placeholder">
+                            <img src="AC_Guests_HG_EN_S@3x.png" alt=""
+                                style="height: 180px ; width: 100%; object-fit: cover; border-radius: 12px 12px 0 0;  ">
+                        </div>
+                        <h3>AirCover for guests</h3>
+                    </a>
+
+                    <a href="#" class="topic-card">
+                        <div class="topic-image-placeholder">
+                            <img src="help-with-hosting-optimized.jpg" alt=""
+                                style="height: 180px ; width: 100%; object-fit: cover; border-radius: 12px 12px 0 0;  ">
+                        </div>
+                        <h3>Essential resources for new hosts</h3>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="top-articles">
+            <h2>Top articles</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h3>How do I reset my password?</h3>
+                    <p>Learn how to reset your Airbnb password easily in a few steps.</p>
+                </div>
+                <div class="article-card">
+                    <h3>What is Airbnb’s cancellation policy?</h3>
+                    <p>Understand the different cancellation policies for hosts and guests.</p>
+                </div>
+                <div class="article-card">
+                    <h3>How do I contact my host?</h3>
+                    <p>Find the best way to message or call your host before or during your trip.</p>
+                </div>
+                <div class="article-card">
+                    <h3>How do I edit my reservation?</h3>
+                    <p>Steps to modify your trip dates, guests, or property preferences.</p>
+                </div>
+                <div class="article-card">
+                    <h3>How do I become a host?</h3>
+                    <p>Everything you need to know about listing your property on Airbnb.</p>
+                </div>
+                <div class="article-card">
+                    <h3>What are Airbnb service fees?</h3>
+                    <p>Understand how Airbnb service fees work for guests and hosts.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="explore-contact">
+            <div class="explore">
+                <h2>Explore more</h2>
+                <div class="explore-cards">
+                    <div class="card">
+                        <img src="Airbnb-Policy-Web.png" alt="Community Policies">
+                        <div class="card-text">
+                            <h3>Our community policies</h3>
+                            <p>How we build a foundation of trust.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="Airbnb-Safety-Web.png" alt="Safety Tips">
+                        <div class="card-text">
+                            <h3>Safety tips and guidelines</h3>
+                            <p>Resources to help travelers stay safe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact">
+                <h2>Need to get in touch?</h2>
+                <p>We’ll start with some questions and get you to the right place.</p>
+                <button class="contact-btn">Contact us</button>
+                <p class="feedback">You can also <a href="#">give us feedback.</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Centre</a></li>
+                        <li><a href="#">AirCover</a></li>
+                        <li><a href="#">Anti-discrimination</a></li>
+                        <li><a href="#">Disability support</a></li>
+                        <li><a href="#">Cancellation options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Hosting</h3>
+                    <ul>
+                        <li><a href="#">Airbnb your home</a></li>
+                        <li><a href="#">AirCover for Hosts</a></li>
+                        <li><a href="#">Hosting resources</a></li>
+                        <li><a href="#">Community forum</a></li>
+                        <li><a href="#">Hosting responsibly</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Airbnb</h3>
+                    <ul>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">New features</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Airbnb.org emergency stays</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Airbnb, Inc. · Privacy · Terms · Siddharth Sharma</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
